@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, shell } = require('electron')
 
 function createWindow() {
   // Create the browser window.
@@ -27,7 +27,7 @@ app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
 })
 
@@ -35,9 +35,19 @@ var menu = Menu.buildFromTemplate([{
   label: 'Menu',
   submenu: [
     { label: "Adjust Notification Value" },
-    { label: "CoinMarketCap" },
+    {
+      label: "CoinMarketCap",
+      click() {
+        shell.openExternal("http://coinmarketcap.com");
+      }
+    },
     { type: "separator" },
-    { label: "Exit" }
+    {
+      label: "Exit",
+      click() {
+        app.quit()
+      }
+    }
 
   ]
 }]);
