@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/aghilesDev/CryptoApp#readme",
   "devDependencies": {
-    "electron": "8.1.1"
+    "electron": "8.2.4"
   },
   "dependencies": {
     "axios": "^0.19.2"
